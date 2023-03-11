@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -224,11 +225,19 @@ public class CombatSystem : MonoBehaviour
 
 	private void PlayerRun()
     {
-		float hpLeft = (enemyUnit.CurrentHP/enemyUnit.MaxHP) * 100;
-		Debug.Log("perc hp left  " + hpLeft);
-		
-		//Maybe next time))))
-    }
+		float hpLeft = (enemyUnit.CurrentHP/enemyUnit.MaxHP);
+		float escapeChance = Convert.ToSingle(0.1 + (1 - hpLeft) * 0.9);
+		Debug.Log(escapeChance);
+		var range = UnityEngine.Random.Range(0f, 1f);
+		if (range <= escapeChance)
+        {
+			Debug.Log("Escaped");
+        }
+        else
+        {
+			Debug.Log("Fail");
+        }
+	}
 
 	private void ButtonsState(bool attackButtonState, bool dodgeButtonState, bool ultimateButtonState, bool inventoryButtonState, bool captureButtonState, bool runButtonState)
     {
