@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5155812021700424550}
+  - component: {fileID: 4657498445060570861}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -32,6 +33,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &4657498445060570861
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259514226045335184}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa225fe00c0f4014c924fb19c483f93e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6267510694899645628
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,7 +63,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2065935903580570226}
   - component: {fileID: 3351347176637954160}
-  - component: {fileID: 9189322223196208271}
+  - component: {fileID: 1701212973603606267}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -117,7 +138,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9189322223196208271
+--- !u!114 &1701212973603606267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,28 +147,74 @@ MonoBehaviour:
   m_GameObject: {fileID: 6267510694899645628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de11b1ac021cd3e4885d7a1335aa207e, type: 3}
+  m_Script: {fileID: 11500000, guid: f381202ff65d8b2478a53098c8ba33d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityName: "\u0418\u0433\u0440\u043E\u043A"
+  entityName: "\u041F\u0440\u0438\u0437\u0440\u0430\u043A"
   entityLevel: 1
-  maxHealth: 150
+  maxHealth: 100
   maxMana: 100
-  dodgeChance: 0
-  damage: 5
+  dodgeChance: 20
+  damage: 15
   abilityDamageMultiplier: 1.5
-  manaPerAttackGain: 50
+  manaPerAttackGain: 10
   HitEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4657498445060570861}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: HitAnimation
+          m_BoolArgument: 0
+        m_CallState: 2
   DodgeEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4657498445060570861}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DodgeAnimation
+          m_BoolArgument: 0
+        m_CallState: 2
   DeadEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4657498445060570861}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DeathAnimation
+          m_BoolArgument: 0
+        m_CallState: 2
   AttackEvent:
     m_PersistentCalls:
-      m_Calls: []
-  turnsDuration: 2
-  evadeParcicles: {fileID: 0}
+      m_Calls:
+      - m_Target: {fileID: 4657498445060570861}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: AttackAnimation
+          m_BoolArgument: 0
+        m_CallState: 2
