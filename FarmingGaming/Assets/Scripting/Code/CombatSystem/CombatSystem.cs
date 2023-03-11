@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, ENDTURN, WON, LOST }
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, ENDTURN, WON, LOST, CAPTURE, RUN }
 
 public class CombatSystem : MonoBehaviour
 {
@@ -32,8 +32,18 @@ public class CombatSystem : MonoBehaviour
 	[SerializeField] private Button attackButton;
 	[SerializeField] private Button dodgeButton;
 	[SerializeField] private Button ultimateButton;
+	[SerializeField] private Button inventoryButton;
+	[SerializeField] private Button captureButton;
+	[SerializeField] private Button runButton;
 
-    private void Start()
+	private bool attackButtonState = true;
+	private bool dodgeButtonState = true;
+	private bool ultimateButtonState = false;
+	private bool inventoryButtonState = true;
+	private bool captureButtonState = false;
+	private bool runButtonState = true;
+
+	private void Start()
     {
         state = BattleState.START;
         turn = 0;
@@ -55,8 +65,6 @@ public class CombatSystem : MonoBehaviour
 		enemyHUD.SetHUD(enemyUnit);
 
 		yield return new WaitForSeconds(2.5f);
-		
-		dodgeButton.interactable = true;
 
 		state = BattleState.PLAYERTURN;
 		PlayerTurn();
@@ -65,12 +73,12 @@ public class CombatSystem : MonoBehaviour
 	private void PlayerTurn()
 	{
 		dialogueText.text = "Выберите действие:";
-		attackButton.interactable = true;
 		NextTurn();
 	}
 
 	private void EnemyTurn()
     {
+
 		dialogueText.text = enemyUnit.Name + " атакует!";
 
 		//если у врага достаточно маны он будет использовать особую атаку
@@ -204,7 +212,6 @@ public class CombatSystem : MonoBehaviour
 				break;
 		}
 	}
-
 	private IEnumerator PlayerDodge()
     {
 		dodgeEndTurn = combatPlayer.DodgeAbilityON(turn);
@@ -214,15 +221,40 @@ public class CombatSystem : MonoBehaviour
 		state = BattleState.ENEMYTURN;
 		EnemyTurn();
 	}
+
+	private void PlayerRun()
+    {
+		float hpLeft = (enemyUnit.CurrentHP/enemyUnit.MaxHP) * 100;
+		float runChance = 1000 / hpLeft;
+
+		Debug.Log(runChance);
+    }
+
+	private void ButtonsState(bool attackButtonState, bool dodgeButtonState, bool ultimateButtonState, bool inventoryButtonState, bool captureButtonState, bool runButtonState)
+    {
+		attackButton.interactable = attackButtonState;
+		dodgeButton.interactable = dodgeButtonState;
+		ultimateButton.interactable = ultimateButtonState;
+		inventoryButton.interactable = inventoryButtonState;
+		captureButton.interactable = captureButtonState;
+		runButton.interactable = runButtonState;
+	}
+
 	public void NextTurn()
 	{
 		turn += 1;
 		turnText.text = "Ход\n" + turn;
-		
+		attackButtonState = true;
+
+
 		if (playerUnit.CurrentMana.Equals(playerUnit.MaxMana))
         {
-			ultimateButton.interactable = true;
+			ultimateButtonState = true;
 		}
+		if (enemyUnit.CurrentHP <= (enemyUnit.MaxHP * 0.1))
+        {
+			captureButtonState = true;
+        }
 
 		if (turn.Equals(dodgeEndTurn))
         {
@@ -231,19 +263,28 @@ public class CombatSystem : MonoBehaviour
 
 		if (turn >= (dodgeEndTurn + 2))
         {
-			dodgeButton.interactable = true;
+			dodgeButtonState = true;
         }
+
+		ButtonsState(attackButtonState, dodgeButtonState, ultimateButtonState, inventoryButtonState, captureButtonState, runButtonState);
 	}
 
 	private void EndBattle()
 	{
-		if (state == BattleState.WON)
-		{
-			dialogueText.text = "Вы победили!";
-		}
-		else if (state == BattleState.LOST)
-		{
-			dialogueText.text = "Вы проиграли.";
+		switch (state)
+        {
+			case BattleState.WON:
+				dialogueText.text = "Вы победили!";
+				break;
+			case BattleState.LOST:
+				dialogueText.text = "Вы проиграли.";
+				break;
+			case BattleState.CAPTURE:
+				dialogueText.text = "Вы захватили существо!.";
+				break;
+			case BattleState.RUN:
+				dialogueText.text = "Вы решили сбежать от битвы.";
+				break;
 		}
 	}
 
@@ -254,6 +295,7 @@ public class CombatSystem : MonoBehaviour
 		{
 			return;
 		}
+		ButtonsState(false, false, false, false, false, false);
 
 		StartCoroutine(Attack(playerUnit, enemyUnit, playerHUD, enemyHUD, true));
 	}
@@ -264,6 +306,8 @@ public class CombatSystem : MonoBehaviour
 		{
 			return;
 		}
+		dodgeButtonState = false;
+		ButtonsState(false, false, false, false, false, false);
 
 		StartCoroutine(PlayerDodge());
 	}
@@ -274,8 +318,36 @@ public class CombatSystem : MonoBehaviour
 		{
 			return;
 		}
-	
+		ultimateButtonState = false;
+		ButtonsState(false, false, false, false, false, false);
+
 		StartCoroutine(UltimateAttack(playerUnit, enemyUnit, playerHUD, enemyHUD, true));
 	}
-    #endregion OnButton
+
+	public void OnInventoryButton()
+	{
+		if (state != BattleState.PLAYERTURN)
+		{
+			return;
+		}
+	}
+
+	public void OnCaptureButton()
+	{
+		if (state != BattleState.PLAYERTURN)
+		{
+			return;
+		}
+		ButtonsState(false, false, false, false, false, false);
+	}
+
+	public void OnRunButton()
+	{
+		if (state != BattleState.PLAYERTURN)
+		{
+			return;
+		}
+		ButtonsState(false, false, false, false, false, false);
+	}
+	#endregion OnButton
 }
