@@ -396,5 +396,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartingMenu
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2646474389676540369, guid: 72adad1b8287332438500e314e94cd41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646474389676540369, guid: 72adad1b8287332438500e314e94cd41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlayPauseToggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646474389676540369, guid: 72adad1b8287332438500e314e94cd41, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SoundSettings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1879310656741164368, guid: 72adad1b8287332438500e314e94cd41, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 72adad1b8287332438500e314e94cd41, type: 3}

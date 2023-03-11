@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour
             return _instance;
         }
     }
+
     [SerializeField] private ItemsSubLib _allItems;
 
     private Item[] _itemList = new Item[Capacity];
@@ -40,6 +41,7 @@ public class Inventory : MonoBehaviour
     {
         Inventory inventory = FindObjectOfType<Inventory>();
         int storedItemId, itemsInStack;
+
         for (int i = 0; i < Capacity; i++)
         {
             storedItemId = PlayerPrefs.GetInt(string.Format("Inventory-slot{0}-itemID", i), 0);
@@ -60,6 +62,7 @@ public class Inventory : MonoBehaviour
         List<int> sameItems = new List<int>();
         List<int> emptySlots = new List<int>();
         int availableSpace = 0;
+
         for (int i = 0; i < Capacity; i++)
         {
             if (_itemList[i] != null)
