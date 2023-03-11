@@ -5,24 +5,26 @@ using UnityEngine.Events;
 
 public abstract class CombatEntity : MonoBehaviour
 {
-	[SerializeField] protected string entityName;
-	[SerializeField] protected int entityLevel;
+	[SerializeField] private EntityData _data;
+
+	protected string entityName;
+	protected int entityLevel;
 
 
-	[Header("Base Stats")]
-	[SerializeField] protected float maxHealth;
+	//[Header("Base Stats")]
+	protected float maxHealth;
 	protected float currentHealth;
 
-	[SerializeField] protected float maxMana;
+	protected float maxMana;
 	protected float currentMana;
 
-	[SerializeField] protected float dodgeChance;
+	protected float dodgeChance;
 
 
-	[Header("Battle Stats")]
-	[SerializeField] protected float damage;
-	[SerializeField] protected float abilityDamageMultiplier;
-	[SerializeField] protected float manaPerAttackGain;
+	//[Header("Battle Stats")]
+	protected float damage;
+	protected float abilityDamageMultiplier;
+	protected float manaPerAttackGain;
 
 	[SerializeField] private UnityEvent HitEvent;
 	[SerializeField] private UnityEvent DodgeEvent;
@@ -69,8 +71,21 @@ public abstract class CombatEntity : MonoBehaviour
 
     #endregion Accessors
 
+    private void Awake()
+    {
+		entityName = _data.entityName;
+		entityLevel = _data.entityLevel;
+		maxHealth = _data.maxHealth;
+		maxMana = _data.maxMana;
+		dodgeChance = _data.dodgeChance;
+		damage = _data.damage;
+		abilityDamageMultiplier = _data.abilityDamageMultiplier;
+		manaPerAttackGain = _data.manaPerAttackGain;
+	}
+
     protected virtual void Start()
     {
+		GetComponent<SpriteRenderer>().sprite = _data.entitySprite;
 		currentHealth = maxHealth;
 		currentMana = 0;
     }
