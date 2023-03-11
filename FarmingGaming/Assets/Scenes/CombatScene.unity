@@ -1590,6 +1590,9 @@ MonoBehaviour:
   attackButton: {fileID: 1117054971}
   dodgeButton: {fileID: 1898214784}
   ultimateButton: {fileID: 1205502202}
+  inventoryButton: {fileID: 1914317660}
+  captureButton: {fileID: 458944294}
+  runButton: {fileID: 961645215}
 --- !u!1 &781938768
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,7 +2182,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 961645216}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 730059629}
+        m_TargetAssemblyTypeName: CombatSystem, Assembly-CSharp
+        m_MethodName: OnRunButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &961645216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3707,7 +3722,7 @@ GameObject:
   - component: {fileID: 1914317661}
   - component: {fileID: 1914317660}
   m_Layer: 5
-  m_Name: BagButton
+  m_Name: InventoryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
