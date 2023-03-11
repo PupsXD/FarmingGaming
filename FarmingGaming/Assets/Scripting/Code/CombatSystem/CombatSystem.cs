@@ -225,9 +225,9 @@ public class CombatSystem : MonoBehaviour
 	private void PlayerRun()
     {
 		float hpLeft = (enemyUnit.CurrentHP/enemyUnit.MaxHP) * 100;
-		float runChance = 1000 / hpLeft;
-
-		Debug.Log(runChance);
+		Debug.Log("perc hp left  " + hpLeft);
+		
+		//Maybe next time))))
     }
 
 	private void ButtonsState(bool attackButtonState, bool dodgeButtonState, bool ultimateButtonState, bool inventoryButtonState, bool captureButtonState, bool runButtonState)
@@ -347,7 +347,8 @@ public class CombatSystem : MonoBehaviour
 		{
 			return;
 		}
-		ButtonsState(false, false, false, false, false, false);
+		//ButtonsState(false, false, false, false, false, false);
+		PlayerRun();
 	}
 	#endregion OnButton
 }
