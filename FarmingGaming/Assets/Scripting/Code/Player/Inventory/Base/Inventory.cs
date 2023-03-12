@@ -61,9 +61,13 @@ public class Inventory : MonoBehaviour
                 itemsInStack = PlayerPrefs.GetInt(string.Format("Inventory-slot{0}-itemsCount", i), 0);
                 var item = _allItems.GetByID(storedItemId);
                 if (item != null)
-                    inventory.TryAdd(item, itemsInStack);
+                {
+                    Debug.Log(i + ": " + item.ItemName);
+                    inventory.ForceAddToSlot(i, item, itemsInStack);
+                }
             }
         }
+        UpdateUI();
 
         return inventory;
     }
@@ -132,11 +136,13 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < Capacity; i++)
         {
+            if (_itemList[i] == null) continue;
             if (_itemList[i].ItemID == item.ItemID)
             {
                 if (_amount[i] > amount)
                 {
                     _amount[i] -= amount;
+                    amount = 0;
                     PlayerPrefs.SetInt(string.Format("Inventory-slot{0}-itemsCount", i), _amount[i]);
                     OnSlotUpdated.Invoke(i);
                     break;
@@ -168,12 +174,43 @@ public class Inventory : MonoBehaviour
         }
         UpdateUI();
     }
-    
+    public bool TryAddToSlot(int slot, Item item, int amount = 1)
+    {
+        if (_itemList[slot] == null) return false;
+        if (_itemList[slot].ItemID == item.ItemID)
+        {
+            int freeSpace = item.CountPerStack - _amount[slot];
+            if(freeSpace < amount)
+            {
+                int amountToAddToEmptySlots = amount - freeSpace;
+                _amount[slot] += freeSpace;
+                PlayerPrefs.SetInt(string.Format("Inventory-slot{0}-itemsCount", slot), _amount[slot]);
+                TryAdd(item, amountToAddToEmptySlots);
+            }
+            else
+            {
+                _amount[slot] += amount;
+                PlayerPrefs.SetInt(string.Format("Inventory-slot{0}-itemsCount", slot), _amount[slot]);
+            }
+            OnSlotUpdated.Invoke(slot);
+            UpdateUI();
+            return true;
+        }
+        return false;
+    }
+    private void ForceAddToSlot(int slot, Item item, int amount = 1)
+    {
+        _itemList[slot] = item;
+        _amount[slot] = amount;
+        PlayerPrefs.SetInt(string.Format("Inventory-slot{0}-itemID", slot), item.ItemID);
+        PlayerPrefs.SetInt(string.Format("Inventory-slot{0}-itemsCount", slot), amount);
+        OnSlotUpdated.Invoke(slot);
+    }
     public void RemoveFromSlot(int slot, int amount = 1)
     {
         if (_itemList[slot] != null)
         {
-            _amount[slot] =- amount;
+            _amount[slot] -= amount;
             
             if (_amount[slot] <= 0)
             {
@@ -199,6 +236,7 @@ public class Inventory : MonoBehaviour
         int contain = 0;
         for (int i = 0; i < Capacity; i++)
         {
+            if (_itemList[i] == null) continue;
             if (_itemList[i].ItemID == item.ItemID)
             {
                 contain += _amount[i];

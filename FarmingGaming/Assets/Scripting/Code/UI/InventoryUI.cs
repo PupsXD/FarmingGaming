@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
     
     [SerializeField] private InventorySlot[] _inventorySlots;
+    [SerializeField] private Image _draggedItem;
+    [SerializeField] private LayerMask _whatIsItemsConsumer;
     private int _capacity = 20;
-    
+    private bool _isDraggingItem;
+    private int _draggingFromSlotNum;
+    private Item _draggedItemReference;
+
     public InventorySlot[]  InventorySlots
     {
         get => _inventorySlots;
@@ -103,5 +109,54 @@ public class InventoryUI : MonoBehaviour
     public void ClearInventory()
     {
         Inventory.Instance.ClearInventory();
+    }
+
+    public void StartDragging(int fromSlotNum)
+    {
+        Inventory.Instance.GetSlotInfo(fromSlotNum, out _draggedItemReference, out int itemsAmoun);
+        if (_draggedItemReference == null) return;
+        _draggedItem.sprite = _draggedItemReference.Icon;
+        _draggingFromSlotNum = fromSlotNum;
+        _draggedItem.gameObject.SetActive(true);
+        _isDraggingItem = true;
+    }
+    private void CancelDragging()
+    {
+        _isDraggingItem = false;
+        _draggedItem.gameObject.SetActive(false);
+    }
+
+    private void LateUpdate()
+    {
+        if (_isDraggingItem)
+        {
+            _draggedItem.transform.position = Input.mousePosition;
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, _whatIsItemsConsumer);
+
+            if (hit.collider != null)
+            {
+                if (hit.transform.TryGetComponent(out IItemConsumer itemConsumer))
+                {
+                    if (itemConsumer.CanConsume(_draggedItemReference))
+                    {
+                        _draggedItem.color = new Color(1, 1, 1, 145f / 256f); ;
+
+                        if (Input.GetMouseButtonUp(0))
+                        {
+                            itemConsumer.Consume(_draggingFromSlotNum);
+                            CancelDragging();
+                        }
+                    }
+                }
+                else
+                    _draggedItem.color = new Color(1, 0, 0, 145f / 256f);
+            }
+            else
+                _draggedItem.color = new Color(1, 0, 0, 145f / 256f);
+            if (Input.GetMouseButtonUp(0))
+            {
+                CancelDragging();
+            }
+        }
     }
 }

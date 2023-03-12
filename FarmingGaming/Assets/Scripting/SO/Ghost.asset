@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc7330957c7273409b463a0c660c0bc, type: 3}
   m_Name: Ghost
   m_EditorClassIdentifier: 
-  ItemName: Creature_1
+  ItemName: Ghost
   CountPerStack: 1
   Icon: {fileID: 1825341485, guid: 86b31258f0a93f04aab58bd35a56a372, type: 3}
   _entityData: {fileID: 11400000, guid: a7a3c09a8b911264ba621c29f7b5ee6f, type: 2}
