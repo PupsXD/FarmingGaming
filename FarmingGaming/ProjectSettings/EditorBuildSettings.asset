@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/StartingScreen.unity
     guid: 5407aa1e06b8323428b2bb6f8f73d413
   - enabled: 1
-    path: Assets/Scenes/OpenMap.unity
-    guid: bb1f9771159ab0f4aa11903f11561424
+    path: Assets/Scenes/RealWorld.unity
+    guid: d599a18037565894a8ca479cb1e15ae0
   - enabled: 1
     path: Assets/Scenes/Farm.unity
     guid: 2265f19dc07846d47afec0f8f5b0db0c
