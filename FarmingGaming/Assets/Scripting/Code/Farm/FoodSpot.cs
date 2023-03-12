@@ -26,10 +26,9 @@ public class FoodSpot : Building
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         LoadSave();
-        //_collectButton.transform.position = Camera.main.WorldToScreenPoint(transform.position);
     }
 
     private void LoadSave()
@@ -76,6 +75,13 @@ public class FoodSpot : Building
         if (collision.CompareTag("Player"))
         {
             _collectButton.SetActive(false);
+        }
+    }
+    private void LateUpdate()
+    {
+        if (_collectButton.activeSelf)
+        {
+            _collectButton.transform.position = Camera.main.WorldToScreenPoint(transform.position);
         }
     }
 }
