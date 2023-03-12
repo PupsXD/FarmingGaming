@@ -278,21 +278,26 @@ public class CombatSystem : MonoBehaviour
 		ButtonsState(attackButtonState, dodgeButtonState, ultimateButtonState, inventoryButtonState, captureButtonState, runButtonState);
 	}
 
+	[SerializeField] private GameObject returnToWorldButton;
 	private void EndBattle()
 	{
 		switch (state)
         {
 			case BattleState.WON:
 				dialogueText.text = "Victory!";
+				returnToWorldButton.SetActive(true);
 				break;
 			case BattleState.LOST:
 				dialogueText.text = "I'll be back.";
+				returnToWorldButton.SetActive(true);
 				break;
 			case BattleState.CAPTURE:
 				dialogueText.text = "Let me go!";
+				returnToWorldButton.SetActive(true);
 				break;
 			case BattleState.RUN:
 				dialogueText.text = "Try to catch me!";
+				returnToWorldButton.SetActive(true);
 				break;
 		}
 	}
