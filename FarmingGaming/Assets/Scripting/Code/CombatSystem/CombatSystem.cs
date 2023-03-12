@@ -19,15 +19,17 @@ public class CombatSystem : MonoBehaviour
 	private CombatEntity enemyUnit;
 	private CombatEntity playerUnit;
 	private CombatPlayer combatPlayer;
-
+	
 	private int turn;
 	private int dodgeEndTurn;
 
 	[Header("UI")]
 	[SerializeField] private BattleHUD playerHUD;
 	[SerializeField] private BattleHUD enemyHUD;
+	[SerializeField] private GameObject inventory;
 	[SerializeField] private Text dialogueText;
 	[SerializeField] private Text turnText;
+	
 
 	[Header("Buttons")]
 	[SerializeField] private Button attackButton;
@@ -64,9 +66,9 @@ public class CombatSystem : MonoBehaviour
 
 		playerHUD.SetHUD(playerUnit);
 		enemyHUD.SetHUD(enemyUnit);
-
+		
 		yield return new WaitForSeconds(2.5f);
-
+	
 		state = BattleState.PLAYERTURN;
 		PlayerTurn();
 	}
@@ -82,7 +84,7 @@ public class CombatSystem : MonoBehaviour
 
 		dialogueText.text = enemyUnit.Name + " bastard!";
 
-		//если у врага достаточно маны он будет использовать особую атаку
+		//пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		if (enemyUnit.CurrentMana.Equals(enemyUnit.MaxMana))
         {
 			StartCoroutine(UltimateAttack(enemyUnit, playerUnit, enemyHUD, playerHUD, false));
@@ -101,7 +103,7 @@ public class CombatSystem : MonoBehaviour
 
 		switch (defensiveState)
 		{
-			//защищающийся получил урон
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			case "hit":
 				defensiveHUD.SetHP(defensiveUnit.CurrentHP);
 				attackerUnit.AddMana();
@@ -123,7 +125,7 @@ public class CombatSystem : MonoBehaviour
 					PlayerTurn();
 				}
 				break;
-			//защищающийся уконился
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			case "dodge":
 				if (isPlayerAttacking)
 				{
@@ -140,7 +142,7 @@ public class CombatSystem : MonoBehaviour
 					PlayerTurn();
 				}
 				break;
-			//защищающийся умер
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			case "dead":
 				defensiveHUD.SetHP(defensiveUnit.CurrentHP);
 				attackerUnit.AddMana();
@@ -175,7 +177,7 @@ public class CombatSystem : MonoBehaviour
 
 		switch (defensiveState)
 		{
-			//защищающийся получил урон
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			case "hit":
 
 				if (isPlayerAttacking)
@@ -194,7 +196,7 @@ public class CombatSystem : MonoBehaviour
 					PlayerTurn();
 				}
 				break;
-			//защищающийся умер
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			case "dead":
 
 				if (isPlayerAttacking)
@@ -344,6 +346,9 @@ public class CombatSystem : MonoBehaviour
 		{
 			return;
 		}
+		Debug.Log("OnInventoryButton");
+		inventory.SetActive(true);
+		
 	}
 
 	public void OnCaptureButton()

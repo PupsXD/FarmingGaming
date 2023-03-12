@@ -42,6 +42,11 @@ public abstract class CombatEntity : MonoBehaviour
 		get { return this.entityLevel; }
 		set { this.entityLevel = value; }
 	}
+	public float CurrentDodje
+	{
+		get { return this.dodgeChance; }
+		set { this.dodgeChance = value; }
+	}
 	public float MaxHP
     {
 		get { return this.maxHealth; }
@@ -81,13 +86,14 @@ public abstract class CombatEntity : MonoBehaviour
 		damage = _data.damage;
 		abilityDamageMultiplier = _data.abilityDamageMultiplier;
 		manaPerAttackGain = _data.manaPerAttackGain;
-	}
+		currentHealth = maxHealth;
+		currentMana = 0;
+    }
 
     protected virtual void Start()
     {
 		GetComponent<SpriteRenderer>().sprite = _data.entitySprite;
-		currentHealth = maxHealth;
-		currentMana = 0;
+		
     }
 
 	public void Attack()
