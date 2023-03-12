@@ -29,7 +29,7 @@ public class FoodSpot : Building
     private void Awake()
     {
         LoadSave();
-        _collectButton.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+        //_collectButton.transform.position = Camera.main.WorldToScreenPoint(transform.position);
     }
 
     private void LoadSave()

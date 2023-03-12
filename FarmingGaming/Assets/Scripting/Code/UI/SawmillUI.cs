@@ -22,5 +22,6 @@ public class SawmillUI : MonoBehaviour
     {
         if (!_sawmill.Ready) return;
         _sawmill.CollectProductionResult();
+        Debug.Log("wood has been collected");
     }
 }

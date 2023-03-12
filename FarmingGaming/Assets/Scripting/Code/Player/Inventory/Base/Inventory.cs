@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -37,6 +38,16 @@ public class Inventory : MonoBehaviour
         DebugInventoryContent();
     }
 
+    public void UpdateUI()
+    {
+        InventoryUI ui = FindObjectOfType<InventoryUI>();
+        if (ui)
+        {
+            ui.UpdateUI();
+        }
+    }
+    
+    
     public Inventory Load()
     {
         Inventory inventory = FindObjectOfType<Inventory>();
@@ -62,7 +73,7 @@ public class Inventory : MonoBehaviour
         List<int> sameItems = new List<int>();
         List<int> emptySlots = new List<int>();
         int availableSpace = 0;
-
+        Debug.Log("Try to add item to Inventory");
         for (int i = 0; i < Capacity; i++)
         {
             if (_itemList[i] != null)
@@ -75,12 +86,14 @@ public class Inventory : MonoBehaviour
             }
             else
                 emptySlots.Add(i);
+
         }
         availableSpace += emptySlots.Count * item.CountPerStack;
         bool result = availableSpace >= amount;
 
         if (result)
         {
+
             foreach (int i in sameItems) //fill not full stacks
             {
                 int freeSpace = item.CountPerStack - _amount[i];
@@ -111,6 +124,7 @@ public class Inventory : MonoBehaviour
 
         }
 
+        UpdateUI();
         return result;
     }
 
@@ -140,8 +154,46 @@ public class Inventory : MonoBehaviour
         }
         if (amount > 0)
             Debug.LogError(string.Format("Not enough items of type {0} in the inventory to remove!", item.ItemName));
+        UpdateUI();
     }
 
+    public void ClearInventory()
+    {
+        for (int i = 0; i < Capacity; i++)
+        {
+            _amount[i] = 0;
+            _itemList[i] = null;
+            PlayerPrefs.SetInt(string.Format("Inventory-slot{0}-itemID", i), 0);
+            PlayerPrefs.SetInt(string.Format("Inventory-slot{0}-itemsCount", i), 0);
+        }
+        UpdateUI();
+    }
+    
+    public void RemoveFromSlot(int slot, int amount = 1)
+    {
+        if (_itemList[slot] != null)
+        {
+            _amount[slot] =- amount;
+            
+            if (_amount[slot] <= 0)
+            {
+                _amount[slot] = 0;
+                _itemList[slot] = null;
+                PlayerPrefs.SetInt(string.Format("Inventory-slot{0}-itemID", slot), 0);
+                PlayerPrefs.SetInt(string.Format("Inventory-slot{0}-itemsCount", slot), 0);
+            }
+            else
+            {
+                PlayerPrefs.SetInt(string.Format("Inventory-slot{0}-itemsCount", slot), _amount[slot]);
+            }
+            
+            OnSlotUpdated.Invoke(slot);
+                   
+            UpdateUI();
+        }
+    }
+    
+    
     public bool Contain(Item item, int amount = 1)
     {
         int contain = 0;

@@ -10,10 +10,17 @@ public class PlayerInput : MonoBehaviour
     private bool _isMovingToTarget;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+       /* if (Input.GetMouseButtonDown(0))
             UpdateTarget();
         WalkToLastClick();
+        */
+
+       float inputY = Input.GetAxis("Vertical");
+       float inputX = Input.GetAxis("Horizontal");
+       
+       _playerMovementComponent.Move(new Vector2(inputX, inputY));
     }
+    
     private void UpdateTarget()
     {
         _targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

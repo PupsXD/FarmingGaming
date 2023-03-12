@@ -76,10 +76,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.8495693, y: 2.680357}
-      - {x: -6.446579, y: 0.46863157}
-      - {x: 0.43650204, y: -4.629447}
-      - {x: 7.0718713, y: -1.50265}
+    - - {x: 1.2259822, y: 5.581276}
+      - {x: -7.798423, y: 1.0291517}
+      - {x: 0.50244576, y: -5.156996}
+      - {x: 7.859625, y: -0.82726455}
 --- !u!1 &2536109506521234678
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,10 +190,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.30603313, y: 0.5644908}
-      - {x: -1.5631232, y: 0.097147286}
+    - - {x: 0.11295748, y: 1.4757953}
+      - {x: -1.7830931, y: 0.43233997}
       - {x: 0.13021523, y: -1.2209848}
-      - {x: 1.5882802, y: -0.51475406}
+      - {x: 1.9653718, y: -0.16908684}
 --- !u!1 &4189246207469425037
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3799481370874108663
 RectTransform:
   m_ObjectHideFlags: 0
@@ -222,7 +222,7 @@ RectTransform:
   m_GameObject: {fileID: 4189246207469425037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6433078750558922585}
@@ -232,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 226}
   m_SizeDelta: {x: 176, y: 171}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9057669179387172938
