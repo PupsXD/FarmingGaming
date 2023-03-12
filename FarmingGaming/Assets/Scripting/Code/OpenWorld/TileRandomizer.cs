@@ -6,11 +6,12 @@ public class TileRandomizer : MonoBehaviour
 {
     public List<GameObject> liGoSpawn = new List<GameObject>();
     public List<GameObject> tilesGrid = new List<GameObject>();
-    
+    public GameObject Spawner;
 
     void Start()
     {
         GridRandomizer();
+        Spawner.SetActive(true);
     }
 
 
