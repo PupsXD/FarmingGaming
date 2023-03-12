@@ -6,11 +6,18 @@ using UnityEngine;
 
 public class Pound : Building
 {
-    [SerializeField] private Creature[] _creaturesLib;
+    [SerializeField] private ItemsSubLib _creaturesLib;
     public override int MaxUpgradeLevel => 1;
     private Creature _storedCreature;
     private DateTime _lastFeedingTime;
     private bool _isHungry;
+
+    private GameObject _creatureModel;
+
+    public bool Empty
+    {
+        get { return _storedCreature == null; }
+    }
     public bool IsHungry
     {
         get 
@@ -27,22 +34,33 @@ public class Pound : Building
 
     private void LoadSave()
     {
-        int storedCreatureID = PlayerPrefs.GetInt(string.Format("Pound-{0}-creatureID", transform.position.ToString().GetHashCode()), -1);
-        if (storedCreatureID < 0)
+        int storedCreatureID = PlayerPrefs.GetInt(string.Format("Pound-{0}-creatureID", transform.position.ToString().GetHashCode()), 0);
+        if (storedCreatureID == 0)
         {
+            //empty pound
         }
         else
         {
-            _storedCreature = _creaturesLib.First((f) => f.ItemID == storedCreatureID);
+            _storedCreature = _creaturesLib.GetByID(storedCreatureID) as Creature;
             _lastFeedingTime = DateTime.Parse(PlayerPrefs.GetString(string.Format("Pound-{0}-lastFeeding", transform.position.ToString().GetHashCode())));
             _isHungry = DateTime.Now.Subtract(_lastFeedingTime).Hours > 0;
+
+            _creatureModel = Instantiate(_storedCreature.WorldCreatureModel, transform);
+            StartCoroutine(CreatureModelDummyAnmator());
         }
     }
 
     public void PutCreatureIntoThePound(Creature creature)
     {
+        if (!Empty) return;
         _storedCreature = creature;
-        //draw creature model in the pound
+        DateTime now = DateTime.Now;
+        _lastFeedingTime = new DateTime(now.Year,now.Month,now.Day);
+        PlayerPrefs.SetInt(string.Format("Pound-{0}-creatureID", transform.position.ToString().GetHashCode()), _storedCreature.ItemID);
+        PlayerPrefs.SetString(string.Format("Pound-{0}-lastFeeding", transform.position.ToString().GetHashCode()), _lastFeedingTime.ToString());
+
+        _creatureModel = Instantiate(_storedCreature.WorldCreatureModel, transform);
+        StartCoroutine(CreatureModelDummyAnmator());
     }
 
     public void Feed()
@@ -58,5 +76,32 @@ public class Pound : Building
         }
         else
             Debug.Log("Not enough food to feed the creature.");
+    }
+
+    IEnumerator CreatureModelDummyAnmator()
+    {
+        Vector2 s, f;
+        while(_creatureModel != null)
+        {
+            s = _creatureModel.transform.position;
+            f = (Vector2)transform.position + UnityEngine.Random.insideUnitCircle;
+            for (float t = 0; t <= 1;)
+            {
+                t += Time.deltaTime;
+                _creatureModel.transform.position = Vector2.Lerp(s, f, t);
+                yield return null;
+            }
+            yield return new WaitForSeconds(1);
+        }
+    }
+    [ContextMenu("Add Random Creature To Inventory")]
+    private void AddRandomCreatureToInventory()
+    {
+        Inventory.Instance.TryAdd(_creaturesLib.GetRandom());
+    }
+    [ContextMenu("Add Random Creature To Pound")]
+    private void AddRandomCreatureToPound()
+    {
+        PutCreatureIntoThePound(_creaturesLib.GetRandom() as Creature);
     }
 }

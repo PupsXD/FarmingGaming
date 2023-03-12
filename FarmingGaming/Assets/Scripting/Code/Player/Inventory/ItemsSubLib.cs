@@ -16,4 +16,8 @@ public class ItemsSubLib : ScriptableObject
     {
         return Items.First((i) => i.ItemID == ID);
     }
+    public Item GetRandom()
+    {
+        return Items[Random.Range(0, Items.Length)];
+    }
 }
