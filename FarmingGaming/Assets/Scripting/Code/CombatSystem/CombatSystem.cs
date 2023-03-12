@@ -60,7 +60,7 @@ public class CombatSystem : MonoBehaviour
 		GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
 		enemyUnit = enemyGO.GetComponentInChildren<CombatEnemy>();
 
-		dialogueText.text = enemyUnit.Name + " преграждает вам путь...";
+		dialogueText.text = enemyUnit.Name + " You're going to die!";
 
 		playerHUD.SetHUD(playerUnit);
 		enemyHUD.SetHUD(enemyUnit);
@@ -73,14 +73,14 @@ public class CombatSystem : MonoBehaviour
 
 	private void PlayerTurn()
 	{
-		dialogueText.text = "Выберите действие:";
+		dialogueText.text = "Take that:";
 		NextTurn();
 	}
 
 	private void EnemyTurn()
     {
 
-		dialogueText.text = enemyUnit.Name + " атакует!";
+		dialogueText.text = enemyUnit.Name + " bastard!";
 
 		//если у врага достаточно маны он будет использовать особую атаку
 		if (enemyUnit.CurrentMana.Equals(enemyUnit.MaxMana))
@@ -109,7 +109,7 @@ public class CombatSystem : MonoBehaviour
 
 				if (isPlayerAttacking)
                 {
-					dialogueText.text = "Успешная атака!";
+					dialogueText.text = "Die creature!";
 					yield return new WaitForSeconds(2f);
 
 					state = BattleState.ENEMYTURN;
@@ -117,7 +117,7 @@ public class CombatSystem : MonoBehaviour
 				}
                 else
                 {
-					dialogueText.text = "Вас ранило!";
+					dialogueText.text = "Take that!";
 					yield return new WaitForSeconds(1.5f);
 					state = BattleState.PLAYERTURN;
 					PlayerTurn();
@@ -127,14 +127,14 @@ public class CombatSystem : MonoBehaviour
 			case "dodge":
 				if (isPlayerAttacking)
 				{
-					dialogueText.text = defensiveUnit.Name + " уклоняется!";
+					dialogueText.text = defensiveUnit.Name + " won't catch me!";
 					yield return new WaitForSeconds(2f);
 					state = BattleState.ENEMYTURN;
 					EnemyTurn();
 				}
                 else
                 {
-					dialogueText.text = "Вы успешно уклонились!";
+					dialogueText.text = "You can't see me!";
 					yield return new WaitForSeconds(1.5f);
 					state = BattleState.PLAYERTURN;
 					PlayerTurn();
@@ -148,7 +148,7 @@ public class CombatSystem : MonoBehaviour
 
 				if (isPlayerAttacking)
                 {
-					dialogueText.text = "Вы наносите финальный удар!";
+					dialogueText.text = "Don't mess with me!";
 					yield return new WaitForSeconds(2f);
 					state = BattleState.WON;
 					EndBattle();
@@ -180,7 +180,7 @@ public class CombatSystem : MonoBehaviour
 
 				if (isPlayerAttacking)
 				{
-					dialogueText.text = "Вы проводите мощнейшую атаку!";
+					dialogueText.text = "For glory and honor!";
 					yield return new WaitForSeconds(2f);
 
 					state = BattleState.ENEMYTURN;
@@ -188,7 +188,7 @@ public class CombatSystem : MonoBehaviour
 				}
 				else
 				{
-					dialogueText.text = "Вас критично ранило!";
+					dialogueText.text = "Charge!";
 					yield return new WaitForSeconds(1.5f);
 					state = BattleState.PLAYERTURN;
 					PlayerTurn();
@@ -199,7 +199,7 @@ public class CombatSystem : MonoBehaviour
 
 				if (isPlayerAttacking)
 				{
-					dialogueText.text = "Вы наносите сокрушающий удар!";
+					dialogueText.text = "No retreat, no surrender!";
 					yield return new WaitForSeconds(2f);
 					state = BattleState.WON;
 					EndBattle();
@@ -216,7 +216,7 @@ public class CombatSystem : MonoBehaviour
 	private IEnumerator PlayerDodge()
     {
 		dodgeEndTurn = combatPlayer.DodgeAbilityON(turn);
-		dialogueText.text = "Вы концентрируетесь на движениях врага и можете их предугадать.";
+		dialogueText.text = "Victory or death!";
 		yield return new WaitForSeconds(2f);
 
 		state = BattleState.ENEMYTURN;
@@ -252,7 +252,7 @@ public class CombatSystem : MonoBehaviour
 	public void NextTurn()
 	{
 		turn += 1;
-		turnText.text = "Ход\n" + turn;
+		turnText.text = "Round\n" + turn;
 		attackButtonState = true;
 
 
@@ -283,16 +283,16 @@ public class CombatSystem : MonoBehaviour
 		switch (state)
         {
 			case BattleState.WON:
-				dialogueText.text = "Вы победили!";
+				dialogueText.text = "Victory!";
 				break;
 			case BattleState.LOST:
-				dialogueText.text = "Вы проиграли.";
+				dialogueText.text = "I'll be back.";
 				break;
 			case BattleState.CAPTURE:
-				dialogueText.text = "Вы захватили существо!.";
+				dialogueText.text = "Let me go!";
 				break;
 			case BattleState.RUN:
-				dialogueText.text = "Вы решили сбежать от битвы.";
+				dialogueText.text = "Try to catch me!";
 				break;
 		}
 	}

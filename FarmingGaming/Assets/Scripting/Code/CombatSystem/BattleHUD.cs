@@ -14,7 +14,7 @@ public class BattleHUD : MonoBehaviour
 	public void SetHUD(CombatEntity entity)
 	{
 		nameText.text = entity.Name;
-		levelText.text = "Lvl " + entity.Level;
+		levelText.text = "LEVEL " + entity.Level;
 		hpSlider.maxValue = entity.MaxHP;
 		hpSlider.value = entity.MaxHP;
 		manaSlider.maxValue = entity.MaxMana;

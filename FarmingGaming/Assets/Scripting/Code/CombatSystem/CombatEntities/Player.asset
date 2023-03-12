@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bace9a1d2dfd4af4db77040b9faa12bc, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  entityName: "\u0418\u0433\u0440\u043E\u043A"
+  entityName: Player
   entityLevel: 1
   entitySprite: {fileID: 21300000, guid: d4df6d45a9a1a5a4a90a49f072969777, type: 3}
   maxHealth: 1500
