@@ -129,14 +129,14 @@ public class CombatSystem : MonoBehaviour
 			case "dodge":
 				if (isPlayerAttacking)
 				{
-					dialogueText.text = defensiveUnit.Name + " won't catch me!";
+					dialogueText.text = "You can't see me!";
 					yield return new WaitForSeconds(2f);
 					state = BattleState.ENEMYTURN;
 					EnemyTurn();
 				}
                 else
                 {
-					dialogueText.text = "You can't see me!";
+					dialogueText.text = attackerUnit.Name + " won't catch me!";
 					yield return new WaitForSeconds(1.5f);
 					state = BattleState.PLAYERTURN;
 					PlayerTurn();
