@@ -1076,6 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cfd616dc7a1eb742a23776e092d896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _creature: {fileID: 11400000, guid: d2ddf8929381a3b4787b0742afac80dd, type: 2}
   state: 0
   playerPrefab: {fileID: 7058265969714732534, guid: 91b2444ce5d97e441a6f036b955737e1, type: 3}
   enemyPrefab: {fileID: 2259514226045335184, guid: 1a38a087c256e924187cba75bdbed4af, type: 3}
@@ -1167,7 +1168,7 @@ RectTransform:
   m_Children:
   - {fileID: 1503531549}
   m_Father: {fileID: 864106693}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1313,8 +1314,8 @@ RectTransform:
   - {fileID: 868465915}
   - {fileID: 1204107785}
   - {fileID: 1405349867}
-  - {fileID: 186087496}
   - {fileID: 831642438}
+  - {fileID: 186087496}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
