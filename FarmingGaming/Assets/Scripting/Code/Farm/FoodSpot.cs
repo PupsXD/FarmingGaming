@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class FoodSpot : Building
+public class FoodSpot : Building, IItemConsumer
 {
     [SerializeField] private GameObject _collectButton;
     [SerializeField] private ItemsSubLib _foodLib;
@@ -83,5 +83,16 @@ public class FoodSpot : Building
         {
             _collectButton.transform.position = Camera.main.WorldToScreenPoint(transform.position);
         }
+    }
+
+    public bool CanConsume(Item item)
+    {
+        //we have no seeds so yet nothing here...
+        return false;
+    }
+
+    public void Consume(int sourceInventorySlot)
+    {
+        //we have no seeds so yet nothing here...
     }
 }

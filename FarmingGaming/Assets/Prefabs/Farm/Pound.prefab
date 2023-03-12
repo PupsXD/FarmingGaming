@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 784354852044623360}
   - component: {fileID: 784354852044623390}
   - component: {fileID: 784354852044623391}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buildingIcon: {fileID: -841019640, guid: 86b31258f0a93f04aab58bd35a56a372, type: 3}
-  _creaturesLib: []
+  _creaturesLib: {fileID: 11400000, guid: 80ad7ed7d704467468674b83fb0d8a22, type: 2}
+  _hungryMarker: {fileID: 6391313113163959285, guid: 5a3d92d654d362c41a5f1a46ca427e98, type: 3}
+  OnBeingFeeded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &784354852044623391
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -201,7 +205,7 @@ GameObject:
   - component: {fileID: 7028652066401738088}
   - component: {fileID: 2823406943951616248}
   - component: {fileID: 1002814112106638424}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5207987615816729374}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Pound-Ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}

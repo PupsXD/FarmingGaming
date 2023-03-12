@@ -63,7 +63,7 @@ public class Builder : MonoBehaviour
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.transform.name);
+
                 if (hit.transform.TryGetComponent(out BuildingSpot buildingSpot))
                 {
                     if (buildingSpot.Empty)

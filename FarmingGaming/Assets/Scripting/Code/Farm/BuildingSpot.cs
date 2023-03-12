@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class BuildingSpot : MonoBehaviour
 {
     [SerializeField] private GameObject _zone;
@@ -36,5 +37,6 @@ public class BuildingSpot : MonoBehaviour
         if (!Empty) return;
         _building = Instantiate(building, transform.position, Quaternion.identity, transform);
         PlayerPrefs.SetString(string.Format("BuildingSpot-{0}-name", transform.position.ToString().GetHashCode()), building.name);
+        GetComponent<Collider2D>().enabled = false;
     }
 }

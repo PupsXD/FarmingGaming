@@ -12,6 +12,7 @@ public class InventorySlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _countText;
     [SerializeField] private int _slotNum;
     [SerializeField] private InventoryUI _ui;
+    [SerializeField] private CustomButton _itemButton;
     private int _count = 0;
     
     private Item _item;
@@ -22,6 +23,11 @@ public class InventorySlot : MonoBehaviour
 
     public delegate void IntDelegate(int value);
     public event IntDelegate OnItemRemove;
+
+    private void Awake()
+    {
+        _itemButton.PointerDown.AddListener(() =>_ui.StartDragging(_slotNum));
+    }
 
     private void OnEnable()
     {

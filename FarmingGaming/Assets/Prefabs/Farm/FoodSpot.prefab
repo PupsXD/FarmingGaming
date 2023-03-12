@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3163887914186274182}
   - component: {fileID: 7875787715941421078}
   - component: {fileID: 5154401127027229878}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6495385115890697259}
   - component: {fileID: 4470031521888245422}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Placeholders_9 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2223588012167278635}
   - component: {fileID: 8103832244083180424}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Placeholders_9 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054283057092720828}
   - component: {fileID: 9148957526585259451}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Placeholders_9 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 1013476485324513327}
   - component: {fileID: 4394825969695434919}
   - component: {fileID: 5727008715705636365}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 3039145368840033039}
   - component: {fileID: 54678999403443102}
   - component: {fileID: 7189971341839744011}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7035712157973136012}
   - component: {fileID: 5205771627779824718}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Placeholders_9 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6302469083807368561}
   - component: {fileID: 8601899049466296608}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Placeholders_9 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -683,7 +683,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1071136413206417844}
   - component: {fileID: 8534983454773002645}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Placeholders_9 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -767,7 +767,7 @@ GameObject:
   m_Component:
   - component: {fileID: 154485505175219184}
   - component: {fileID: 8144430690168531703}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: FoodSpot-Ui
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,7 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7340077454106536044}
   - component: {fileID: 3581001826006409583}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Placeholders_9 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7169006359795106014}
   - component: {fileID: 9138771309392322955}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Placeholders_9 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -988,7 +988,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4647780846903555885}
   - component: {fileID: 4460793094315163475}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Spots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 4647780847019157230}
   - component: {fileID: 112514989849202197}
   - component: {fileID: 7847425541096507746}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FoodSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1149,7 +1149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4647780847250365556}
   - component: {fileID: 4647780847250365563}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Placeholders_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,7 +1232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4647780847404346692}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1275,7 +1275,7 @@ GameObject:
   - component: {fileID: 3090940857192767292}
   - component: {fileID: 5024360732342141204}
   - component: {fileID: 4690618335722374438}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Collect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

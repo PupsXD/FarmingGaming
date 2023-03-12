@@ -460,7 +460,7 @@ TextureImporter:
         width: 244
         height: 159
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -468,6 +468,69 @@ TextureImporter:
       bones: []
       spriteID: dabaadb25c9f90046b0a3c23ce8dd3b7
       internalID: -1916098994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Placeholders_16
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 375
+        width: 125
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0648b3c8cac8cde4eb171e0b7df4e508
+      internalID: 1825341485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Placeholders_17
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 257
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45999f2a8235e245abbe3865839d7b5
+      internalID: -669629505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Placeholders_18
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 256
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a847e8ef43a99604b957649bf8a40aaf
+      internalID: -1577693714
       vertices: []
       indices: 
       edges: []
@@ -487,6 +550,7 @@ TextureImporter:
       Placeholders_3: -1650081236
       Placeholders_13: -1307721934
       Placeholders_8: 921823105
+      Placeholders_17: -669629505
       Placeholders_14: -841019640
       Placeholders_4: 1428107286
       Placeholders_15: -1916098994
@@ -494,6 +558,8 @@ TextureImporter:
       Placeholders_6: -954444029
       Placeholders_9: 1308571304
       Placeholders_11: -1606137550
+      Placeholders_16: 1825341485
+      Placeholders_18: -1577693714
       Placeholders_2: -1990099079
       Placeholders_1: -1912606708
       Placeholders_10: 1863966743
