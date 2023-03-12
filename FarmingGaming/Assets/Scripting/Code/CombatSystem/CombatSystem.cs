@@ -8,6 +8,8 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, ENDTURN, WON, LOST, CAPT
 
 public class CombatSystem : MonoBehaviour
 {
+	[SerializeField] private Creature _creature;
+
 	[SerializeField] private BattleState state;
 
 	[SerializeField] private GameObject playerPrefab;
@@ -19,7 +21,8 @@ public class CombatSystem : MonoBehaviour
 	private CombatEntity enemyUnit;
 	private CombatEntity playerUnit;
 	private CombatPlayer combatPlayer;
-	
+	private CombatEnemy combatEnemy;
+
 	private int turn;
 	private int dodgeEndTurn;
 
@@ -61,6 +64,8 @@ public class CombatSystem : MonoBehaviour
 
 		GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
 		enemyUnit = enemyGO.GetComponentInChildren<CombatEnemy>();
+		combatEnemy = enemyGO.GetComponentInChildren<CombatEnemy>();
+
 
 		dialogueText.text = enemyUnit.Name + " You're going to die!";
 
@@ -234,11 +239,29 @@ public class CombatSystem : MonoBehaviour
 		if (range <= escapeChance)
         {
 			Debug.Log("Escaped");
-        }
+			state = BattleState.RUN;
+			EndBattle();
+
+		}
         else
         {
 			Debug.Log("Fail");
-        }
+			state = BattleState.ENEMYTURN;
+			EnemyTurn();
+		}
+	}
+
+	private IEnumerator CreatureCapture()
+    {
+
+		combatEnemy.CaptureON();
+		yield return new WaitForSeconds(1f);
+		Inventory.Instance.TryAdd(_creature, 1);
+		combatEnemy.CaptureOFF();
+		enemyUnit.GetComponentInChildren<SpriteRenderer>().enabled = false;
+		state = BattleState.CAPTURE;
+		yield return new WaitForSeconds(0.5f);
+		EndBattle();
 	}
 
 	private void ButtonsState(bool attackButtonState, bool dodgeButtonState, bool ultimateButtonState, bool inventoryButtonState, bool captureButtonState, bool runButtonState)
@@ -346,9 +369,8 @@ public class CombatSystem : MonoBehaviour
 		{
 			return;
 		}
-		Debug.Log("OnInventoryButton");
-		inventory.SetActive(true);
-		
+
+		inventory.SetActive(true);		
 	}
 
 	public void OnCaptureButton()
@@ -358,6 +380,7 @@ public class CombatSystem : MonoBehaviour
 			return;
 		}
 		ButtonsState(false, false, false, false, false, false);
+		StartCoroutine(CreatureCapture());
 	}
 
 	public void OnRunButton()
@@ -366,7 +389,7 @@ public class CombatSystem : MonoBehaviour
 		{
 			return;
 		}
-		//ButtonsState(false, false, false, false, false, false);
+		ButtonsState(false, false, false, false, false, false);
 		PlayerRun();
 	}
 	#endregion OnButton
