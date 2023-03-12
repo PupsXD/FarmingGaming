@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 974386660447323354}
   - component: {fileID: 974386660447323353}
   - component: {fileID: 974386660447323352}
+  - component: {fileID: 1023432233256608664}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -583,6 +584,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1023432233256608664}
+        m_TargetAssemblyTypeName: Exit, Assembly-CSharp
+        m_MethodName: OnExitButtonPushed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1023432233256608664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974386660447323334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e1c8d98d91fc2f4ab44ca2e0b0a0bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &974386660890545431
 GameObject:
   m_ObjectHideFlags: 0

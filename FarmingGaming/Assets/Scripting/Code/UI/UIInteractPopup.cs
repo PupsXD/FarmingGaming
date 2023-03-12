@@ -8,6 +8,12 @@ public class UIInteractPopup : MonoBehaviour
         PlayerTriggerDetector.WorldEventLeft += DeactivatePopUp;
     }
 
+    private void OnDisable()
+    {
+        PlayerTriggerDetector.WorldEventApproached -= ActivatePopUp;
+        PlayerTriggerDetector.WorldEventLeft -= DeactivatePopUp;
+    }
+
     private void ActivatePopUp()
     {
         this.gameObject.SetActive(true);
