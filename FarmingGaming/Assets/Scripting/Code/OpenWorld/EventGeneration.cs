@@ -20,15 +20,17 @@ public class EventGeneration : MonoBehaviour
         spawnZoneMaxX = spawnZonePosition.x + (spawnZone.transform.localScale.x / 2);
         spawnZoneMinY = spawnZonePosition.y - (spawnZone.transform.localScale.y / 2);
         spawnZoneMaxY = spawnZonePosition.y + (spawnZone.transform.localScale.y / 2);
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        
+        for (int i = 0; i < Random.Range(3, 15); i++)
         {
             SpawnObject();
         }
     }
+
+    // void Update()
+    // {
+    //     
+    // }
 
     void SpawnObject()
     {
