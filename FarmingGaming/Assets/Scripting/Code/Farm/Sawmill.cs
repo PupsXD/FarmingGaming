@@ -71,5 +71,11 @@ public class Sawmill : Building
             _collectButton.SetActive(false);
         }
     }
-
+    private void LateUpdate()
+    {
+        if (_collectButton.activeSelf)
+        {
+            _collectButton.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+        }
+    }
 }

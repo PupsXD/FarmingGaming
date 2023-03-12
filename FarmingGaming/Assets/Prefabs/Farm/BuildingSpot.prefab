@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8757218949262180629}
   - component: {fileID: 8757218949262180626}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,8 @@ GameObject:
   - component: {fileID: 8757218949593364121}
   - component: {fileID: 8757218949593364103}
   - component: {fileID: 8757218949593364102}
-  m_Layer: 0
+  - component: {fileID: 2618579072578493019}
+  m_Layer: 3
   m_Name: BuildingSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,11 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bcf7058916de1419396e33ca652c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionTooltip: {fileID: 8757218950823848787}
-  _contextMenu: {fileID: 0}
   _zone: {fileID: 8757218949872278086}
-  _foodSpotPrefab: {fileID: 112514989849202197, guid: 7535397464b0ed34fbdcf014a11eb30e, type: 3}
-  _poundPrefab: {fileID: 784354852044623390, guid: 710112fd917589f438891c97607b97b6, type: 3}
 --- !u!61 &8757218949593364102
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -162,6 +159,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.7402167, y: 4.3813043}
   m_EdgeRadius: 0
+--- !u!50 &2618579072578493019
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757218949593364120}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8757218949872278086
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8757218949872278087}
   - component: {fileID: 8757218949872278084}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8757218950823848784}
   - component: {fileID: 8757218950823848785}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}

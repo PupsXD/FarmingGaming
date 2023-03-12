@@ -439,7 +439,7 @@ TextureImporter:
         width: 233
         height: 155
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -447,6 +447,27 @@ TextureImporter:
       bones: []
       spriteID: 46a7f8f6fb5c5744da5e84e12924bf8d
       internalID: -841019640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Placeholders_15
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 55
+        width: 244
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dabaadb25c9f90046b0a3c23ce8dd3b7
+      internalID: -1916098994
       vertices: []
       indices: 
       edges: []
@@ -468,6 +489,7 @@ TextureImporter:
       Placeholders_8: 921823105
       Placeholders_14: -841019640
       Placeholders_4: 1428107286
+      Placeholders_15: -1916098994
       Placeholders_0: 53128999
       Placeholders_6: -954444029
       Placeholders_9: 1308571304

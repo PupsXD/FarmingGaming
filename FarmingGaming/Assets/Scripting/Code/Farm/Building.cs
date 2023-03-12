@@ -4,6 +4,11 @@ using UnityEngine;
 
 public abstract class Building : MonoBehaviour
 {
+    [SerializeField] private Sprite _buildingIcon;
+    public Sprite BuildingIcon
+    {
+        get { return _buildingIcon; }
+    }
     private bool _isBroken;
     protected int _currentUpgradeLevel = 1;
     public bool IsBroken
