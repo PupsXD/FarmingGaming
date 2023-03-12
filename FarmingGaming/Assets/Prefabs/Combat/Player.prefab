@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83571983ad2feae428acecd1589c90f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allItems: {fileID: 11400000, guid: 80ad7ed7d704467468674b83fb0d8a22, type: 2}
+  _allItems: {fileID: 11400000, guid: 72cc93c2f3560b84e8b519de1771c35a, type: 2}
   OnSlotUpdated:
     m_PersistentCalls:
       m_Calls: []
