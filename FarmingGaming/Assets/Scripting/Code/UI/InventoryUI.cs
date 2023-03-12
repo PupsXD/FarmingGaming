@@ -37,7 +37,7 @@ public class InventoryUI : MonoBehaviour
             }
         }*/
 
-        Inventory.Instance.OnSlotUpdated.AddListener(UpdateSlotUI);
+        //Inventory.Instance.OnSlotUpdated.AddListener(UpdateSlotUI);
 
     }
 
