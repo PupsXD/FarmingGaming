@@ -25,6 +25,7 @@ public class EventGeneration : MonoBehaviour
         {
             SpawnObject();
         }
+        Destroy(spawnZone);
     }
 
     // void Update()
