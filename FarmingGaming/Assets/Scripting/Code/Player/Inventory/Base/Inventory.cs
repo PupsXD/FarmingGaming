@@ -111,6 +111,7 @@ public class Inventory : MonoBehaviour
                 OnSlotUpdated.Invoke(i);
                 if (amount == 0) break;
             }
+            if (amount > 0)
             foreach (int i in emptySlots) //fill empty slots
             {
                 _itemList[i] = item;

@@ -38,5 +38,6 @@ public class BuildingSpot : MonoBehaviour
         _building = Instantiate(building, transform.position, Quaternion.identity, transform);
         PlayerPrefs.SetString(string.Format("BuildingSpot-{0}-name", transform.position.ToString().GetHashCode()), building.name);
         GetComponent<Collider2D>().enabled = false;
+        _zone.SetActive(false);
     }
 }

@@ -2,17 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Builder : MonoBehaviour
 {
     [SerializeField] private Building[] _allBuildings;
+    [SerializeField] private BuildingResource _resource;
     [SerializeField] private Button _buildButton;
     [SerializeField] private Image _builderAim;
+    [SerializeField] private GameObject _aprooveBuildWindow;
+    [SerializeField] private TextMeshProUGUI _buildCostText;
+    [SerializeField] private GameObject _notEnoughResourcesWindow;
     [SerializeField] private LayerMask _whatIsBuildingSpot;
     private bool _inPlacingMode;
     private int _selectedBuildingIndex;
+    private BuildingSpot _selectedBuildingSpot;
 
     private void Awake()
     {
@@ -51,7 +57,6 @@ public class Builder : MonoBehaviour
     {
         _inPlacingMode = false;
         _builderAim.gameObject.SetActive(false);
-        _selectedBuildingIndex = -1;
     }
 
     private void Update()
@@ -72,7 +77,7 @@ public class Builder : MonoBehaviour
 
                         if (Input.GetMouseButtonDown(0))
                         {
-                            buildingSpot.Build(_allBuildings[_selectedBuildingIndex]);
+                            TryBuildAtGivenSpot(buildingSpot);
                             CloseBuildStream();
                         }
                     }
@@ -86,7 +91,27 @@ public class Builder : MonoBehaviour
                 CloseBuildStream();
         }
     }
+    private void TryBuildAtGivenSpot(BuildingSpot buildingSpot)
+    {
+        if (Inventory.Instance.Contain(_resource, _allBuildings[_selectedBuildingIndex].BuildCost))
+        {
+            _aprooveBuildWindow.SetActive(true);
+            _buildCostText.text = _allBuildings[_selectedBuildingIndex].BuildCost.ToString();
+            _selectedBuildingSpot = buildingSpot;
+        }
+        else
+        {
+            _selectedBuildingSpot = null;
+            _notEnoughResourcesWindow.SetActive(true);
+        }
+    }
 
+    public void Aproove()
+    {
+        _selectedBuildingSpot.Build(_allBuildings[_selectedBuildingIndex]);
+        Inventory.Instance.Remove(_resource, _allBuildings[_selectedBuildingIndex].BuildCost);
+        _selectedBuildingIndex = -1;
+    }
     public Building GetBuildingByName(string buildingName)
     {
         return _allBuildings.First((b) => b.name == buildingName);

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Carrot
   CountPerStack: 16
-  Icon: {fileID: 921823105, guid: 86b31258f0a93f04aab58bd35a56a372, type: 3}
+  Icon: {fileID: 749573374, guid: f12223decf11e7f4fbb4eff2595a5da8, type: 3}
   GrowthTime:
     _hours: 0
     _minutes: 1
